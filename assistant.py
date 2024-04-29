@@ -19,8 +19,8 @@ API_KEY = config.get('wolfram', 'API_KEY')
 API_URL = "http://api.wolframalpha.com/v2/query"
 SUPPORTED_LANGUAGES = {'en': 'English', 'es': 'Spanish', 'de': 'German', 'fr': 'French'}
 DEFAULT_LANGUAGE = 'en'
-WAKE_WORDS = ['hey wolfram', 'wolfram']
-EXIT_PHRASE = 'exit program'
+WAKE_WORDS = ['hey Ambrose', 'Ambrose']
+EXIT_PHRASE = 'thank you Ambrose'
 
 def query_wolfram_alpha(input_query, lang=DEFAULT_LANGUAGE):
     """Query Wolfram Alpha API and return the result."""
