@@ -8,6 +8,7 @@ from gtts import gTTS
 from pydub import AudioSegment
 from pydub.playback import play
 from threading import Thread
+from google.cloud import dialogflow
 
 # Initialize logging
 logging.basicConfig(level=logging.INFO)
@@ -17,6 +18,9 @@ config = ConfigParser()
 config.read('config.ini')
 API_KEY = config.get('wolfram', 'API_KEY')
 API_URL = "http://api.wolframalpha.com/v2/query"
+DIALOGFLOW_PROJECT_ID = config.get('Dialogflow', 'project_id')
+DIALOGFLOW_SESSION_ID = config.get('Dialogflow', 'session_id')
+DIALOGFLOW_LANGUAGE_CODE = config.get('Dialogflow', 'language_code', fallback='en')
 SUPPORTED_LANGUAGES = {'en': 'English', 'es': 'Spanish', 'de': 'German', 'fr': 'French'}
 DEFAULT_LANGUAGE = 'en'
 WAKE_WORDS = ['hey Ambrose', 'Ambrose']
@@ -44,6 +48,15 @@ def query_wolfram_alpha(input_query, lang=DEFAULT_LANGUAGE):
     except requests.exceptions.RequestException as e:
         logging.error(f"API request failed: {e}")
         return "Failed to fetch response from API."
+
+def detect_intent_dialogflow(query, session_id, language_code):
+    """Send query to Dialogflow and get the response."""
+    session_client = dialogflow.SessionsClient()
+    session = session_client.session_path(DIALOGFLOW_PROJECT_ID, session_id)
+    text_input = dialogflow.TextInput(text=query, language_code=language_code)
+    query_input = dialogflow.QueryInput(text=text_input)
+    response = session_client.detect_intent(request={"session": session, "query_input": query_input})
+    return response.query_result.fulfillment_text
 
 def asynchronous_speak(text, lang=DEFAULT_LANGUAGE):
     """Convert text to speech and play it asynchronously."""
@@ -102,6 +115,8 @@ async def main_loop():
                 if query:
                     logging.info(f"Received: {query}")
                     result = query_wolfram_alpha(query)
+                    if 'no readable result' in result:
+                        result = detect_intent_dialogflow(query, DIALOGFLOW_SESSION_ID, DIALOGFLOW_LANGUAGE_CODE)
                     logging.info(f"Answer: {result}")
                     asynchronous_speak(result)
 
