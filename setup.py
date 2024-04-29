@@ -2,21 +2,38 @@ from setuptools import setup, find_packages
 
 setup(
     name='Ambrose-VA',
-    version='1.0.0',
+    version='1.0.1',  # Updated version to reflect changes and improvements
     packages=find_packages(),
     install_requires=[
         'requests',
         'speech_recognition',
         'gtts',
-        'pydub'
+        'pydub',
+        'google-cloud-dialogflow',  # Added for Dialogflow API integration
+        'pygame'  # Ensure this dependency is listed if used for additional functionality
     ],
     entry_points={
         'console_scripts': [
-            'personal-assistant = cli:main',
+            'personal-assistant = cli:main',  # Ensure the script is pointed correctly
         ],
     },
-    author='Ant O, Greene',
+    author='Ant O. Greene',
     author_email='Reel0112358.13@proton.me',
-    description='A CLI-based personal assistant',
-    keywords='personal assistant voice wolfram-alpha',
+    description='A CLI-based personal assistant integrated with Wolfram Alpha and Dialogflow APIs',
+    keywords='personal assistant voice wolfram-alpha dialogflow',
+    long_description="""Ambrose-VA is a sophisticated CLI-based personal assistant 
+                        that leverages powerful APIs like Wolfram Alpha and Dialogflow 
+                        to provide users with accurate and responsive assistance across 
+                        a range of queries and commands.""",
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Intended Audience :: Developers',
+        'Topic :: Software Development :: Build Tools',
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+    ],
+    python_requires='>=3.7',
 )
