@@ -2,7 +2,7 @@
 
 ## Introduction
 This project is a voice-activated personal assistant that interacts with the Wolfram Alpha API to provide information based on user queries. It listens for wake words, processes voice commands, and converts text to speech for user interaction.
-
+![ambrose](
 ## Features
 - **Wake Word Detection:** Listens for specific wake words ("hey wolfram", "wolfram") to activate the assistant.
 - **Voice Input:** Processes voice input from the user after the wake word is detected.
