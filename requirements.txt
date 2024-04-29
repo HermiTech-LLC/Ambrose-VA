@@ -1,0 +1,5 @@
+requests
+speech_recognition
+gTTS
+pydub
+pygame
