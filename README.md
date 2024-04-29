@@ -13,7 +13,7 @@ This project is a voice-activated personal assistant that interacts with the Wol
 ## Installation
 1. Clone the repository to your local machine:
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/HermiTech-LLC/Ambrose-VI.git
     ```
 
 2. Install the required Python libraries:
