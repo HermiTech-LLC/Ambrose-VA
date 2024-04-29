@@ -1,4 +1,4 @@
-# Ambrose-VI
+# Ambrose-VA
 
 ## Introduction
 This project is a voice-activated personal assistant that interacts with the Wolfram Alpha API to provide information based on user queries. It listens for wake words, processes voice commands, and converts text to speech for user interaction.
