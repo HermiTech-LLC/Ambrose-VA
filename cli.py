@@ -7,8 +7,10 @@ def main():
     parser.add_argument('--lang', type=str, default=DEFAULT_LANGUAGE, help="Specify the language for the assistant")
     args = parser.parse_args()
 
+    # Set up logging configuration
     logging.basicConfig(level=logging.INFO)
     
+    # Start the assistant main loop with the specified language
     assistant_main(args.lang)
 
 if __name__ == "__main__":
