@@ -1,5 +1,9 @@
 requests
-speech_recognition
+SpeechRecognition
 gTTS
 pydub
 pygame
+google-cloud-dialogflow
+openai
+python-dotenv
+wxPython
