@@ -9,8 +9,13 @@ setup(
         'speech_recognition',
         'gtts',
         'pydub',
-        'google-cloud-dialogflow',  # Added for Dialogflow API integration
-        'pygame'  # Ensure this dependency is listed if used for additional functionality
+        'google-cloud-dialogflow',
+        'pygame',  # Ensure this dependency is listed if used for additional functionality
+        'google-cloud-speech',  # Add this if you're using Google Cloud Speech-to-Text
+        'wxPython',  # Ensure this dependency is included if used for GUI features
+        'openai',  # Added if using OpenAI's API
+        'python-dotenv',  # For loading environment variables
+        'pygame'  # Dependency for playing audio if used
     ],
     entry_points={
         'console_scripts': [
